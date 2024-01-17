@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Phone = (props) => {
     return(
         <div>

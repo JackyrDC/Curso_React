@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import GuideData from './components/GuideData'
-import PhonesRender from './components/PhonesRender'
+import Phone from './components/PhonesRender'
 
 const App = () => {
   const [ persons, setPersons ] = useState(GuideData) 
@@ -17,50 +17,59 @@ const App = () => {
       email: email
     }
 
-    setPersons(persons.concat(NumberObject))
-    setNewName("")
-    setEmail("")
-    setPhone("")
+    console.log(NumberObject)
+    const nameAlreadyExists = persons.some((person) => person.name === newName);
+
+    if(nameAlreadyExists)
+    {
+      alert('${newName} actually exist between your contacts')
+    }
+    else{
+      setPersons(persons.concat(NumberObject))
+      setNewName("")
+      setEmail("")
+      setPhone("")
+    }
+
+
   }
 
   const handleChangeNumber = (event) =>{
-    event.preventDefault()
     setPhone(event.target.value)
   }
 
   const handleChangeName = (event)=>
   {
-    event.preventDefault()
     setNewName(event.target.value)
   }
 
   const handleChangeMail = (event) => {
-    event.preventDefault()
     setEmail(event.target.value)
   }
 
+
   return (
-    <div>
+    <div className = "phoneform">
       <h2>Guía Telefónica</h2>
-      <form>
-        <div>
-          name: <input onChange={handleChangeName} />
+      <form onSubmit={handleNewNumber}>
+        <div className='inputs' >
+          name: <input id="input" onChange={handleChangeName} />
         </div>
-        <div>
-          Phone number: <input type="tel" pattern='+504 [0-9]{4}-[0-9]{4}' onChange={handleChangeNumber}/>
+        <div className='inputs' >
+          Phone number: <input id="input" type="tel" onChange={handleChangeNumber}/>
         </div>
-        <div>
-          Email: <input type="email" onChange={handleChangeMail} />
+        <div className='inputs' >
+          Email: <input id="input" type="email" onChange={handleChangeMail} />
         </div>
-        <div>
-          <button type="submit" onSubmit={handleNewNumber}>add</button>
+        <div className='inputs' >
+          <button type="submit" >add</button>
         </div>
       </form>
       <h2>Numbers</h2>
       <div> 
         {
           persons.map(person => 
-              <PhonesRender key= {person.id} name = {person.name} phoneNumber = {person.phoneNumber} email = {person.email} />
+              <Phone key= {person.id} name = {person.name} phoneNumber = {person.phoneNumber} email = {person.email} />
             )
         }
       </div>

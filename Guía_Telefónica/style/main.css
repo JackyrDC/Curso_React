@@ -1,0 +1,22 @@
+.phoneform
+{
+    display:block;
+    align-items: start;
+}
+
+#input
+{
+    margin-right: 15px;
+    padding: 5px;
+    border-top-right-radius: 5%;
+    border-top-left-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+#inputs
+{
+    margin-bottom: 15px;
+    padding-bottom: 3px;
+    border-bottom: 1px rgb(136, 132, 131 );
+}
