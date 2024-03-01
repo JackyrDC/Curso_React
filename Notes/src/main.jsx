@@ -11,6 +11,7 @@ console.log(promise2)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <App notes={promise} errorNotes={promise2} />
     <App />
   </React.StrictMode>,
 )
